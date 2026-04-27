@@ -1,30 +1,7 @@
 <template>
   <div class="flex flex-col min-h-screen bg-gray-100 items-center font-bold text-3xl gap-48">
-
-    <header class="sticky top-0 bg-white flex justify-between w-full shadow-lg p-4 z-50">
-      <div>
-        <img src=" ../assets/logo.png" class="w-[140px] hover:scale-105">
-      </div>
-
-      <div class="flex justify-between gap-12">
-        <div class="text-gray-800 font-medium text-base my-auto hover:text-red-600">
-          Funcionalidades
-        </div>
-        <div class="text-gray-800 font-medium text-base my-auto hover:text-red-600">
-          Contato
-        </div>
-        <button
-          class="bg-red-700 rounded-xl px-10 text-white h-[50px] my-auto font-medium text-base hover:scale-[1.02]">
-          Entrar
-        </button>
-      </div>
-
-    </header>
-
-
-
-
-    <div class="flex flex-col">
+    <Header />
+        <div class="flex flex-col">
       <div class="flex justify-between text-left gap-8">
         <div class="flex flex-col gap-12">
           <div class=" text-red-600 text-8xl max-w-2xl">
@@ -100,7 +77,11 @@
    
 
   </div>
+  
 </template>
 
+
+
 <script setup>
+import Header from '../components/Header.vue';
 </script>
