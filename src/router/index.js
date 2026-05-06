@@ -5,6 +5,8 @@ import {createRouter, createWebHistory} from 'vue-router';
 import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'; 
 import Dashboard from '../views/Dashboard.vue'; 
+import CadastroFuncionario from '../views/CadastroFuncionario.vue';
+import CadastroEPI from '../views/CadastroEPI.vue'; 
 
 
 
@@ -23,6 +25,16 @@ const routes = [
     {
         path:'/Dashboard',
         component: Dashboard
+    },
+
+    {
+        path:'/CadastroFuncionario',
+        component: CadastroFuncionario
+    },
+
+    {
+        path:'/CadastroEPI',
+        component: CadastroEPI
     }
 ]
 
