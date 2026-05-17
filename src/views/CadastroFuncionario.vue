@@ -270,51 +270,245 @@ function formatarDataHora(iso) {
 </script>
 
 <style scoped>
-.cadastro-container { min-height: 100vh; background: #f5f5f5; }
-.content { padding: 30px; margin-top: 20px; }
+.cadastro-container { 
+  min-height: 100vh; 
+  background: #f5f5f5; 
+}
 
-.header-section { background: white; padding: 20px; border-radius: 8px; margin-bottom: 30px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-.header-section h1 { color: #c40000; font-size: 28px; margin: 0; }
+.content {
+  padding: 30px; 
+  margin-top: 20px; 
+}
 
-.form-container { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-.form-group { margin-bottom: 20px; display: flex; flex-direction: column; }
-.form-group label { font-weight: 600; margin-bottom: 8px; color: #333; }
+.header-section { 
+  background: white; 
+  padding: 20px; 
+  border-radius: 8px; 
+  margin-bottom: 30px; 
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+}
+
+.header-section h1 { 
+  color: #c40000; 
+  font-size: 28px; 
+  margin: 0; 
+}
+
+.form-container { 
+  background: white; 
+  padding: 30px; 
+  border-radius: 8px; 
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+}
+
+.form-group { 
+  margin-bottom: 20px; 
+  display: flex; 
+  flex-direction: column; 
+}
+
+.form-group label { 
+  font-weight: 600; 
+  margin-bottom: 8px; 
+  color: #333; 
+}
+
 .form-group input,
-.form-group select { padding: 12px; border: 1px solid #ddd; border-radius: 4px; font-size: 14px; transition: border-color 0.2s; }
+.form-group select { 
+  padding: 12px; 
+  border: 1px solid #ddd; 
+  border-radius: 4px; 
+  font-size: 14px; 
+  transition: border-color 0.2s; 
+}
+
 .form-group input:focus,
-.form-group select:focus { outline: none; border-color: #c40000; box-shadow: 0 0 0 2px rgba(196,0,0,0.1); }
+.form-group select:focus { 
+  outline: none; 
+  border-color: #c40000; 
+  box-shadow: 0 0 0 2px rgba(196,0,0,0.1); 
+}
 
-.input-erro { border-color: #c40000 !important; background: #fff8f8; }
-.msg-erro { color: #c40000; font-size: 12px; margin-top: 4px; font-weight: 500; }
-.msg-ok { color: #2e7d32; font-size: 12px; margin-top: 4px; font-weight: 500; }
+.input-erro { 
+  border-color: #c40000; 
+  background: #fff8f8; 
+}
 
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-.form-actions { display: flex; gap: 10px; margin-top: 30px; }
-.btn-save { background: #c40000; color: white; padding: 12px 30px; border: none; border-radius: 4px; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
-.btn-save:hover:not(:disabled) { background: #a00000; transform: translateY(-2px); box-shadow: 0 4px 8px rgba(196,0,0,0.3); }
-.btn-save:disabled { opacity: 0.7; cursor: not-allowed; }
-.btn-cancel { background: #f0f0f0; color: #333; padding: 12px 30px; border: 1px solid #ddd; border-radius: 4px; font-size: 16px; font-weight: 600; cursor: pointer; }
-.btn-cancel:hover { background: #e0e0e0; }
+.msg-erro { 
+  color: #c40000; 
+  font-size: 12px; 
+  margin-top: 4px; 
+  font-weight: 500; 
+}
 
-.historico-container { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-top: 30px; }
-.historico-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
-.historico-header h2 { color: #c40000; font-size: 22px; margin: 0; }
-.historico-count { background: #f0f0f0; color: #555; font-size: 13px; padding: 4px 12px; border-radius: 20px; font-weight: 600; }
-.historico-vazio { text-align: center; color: #999; padding: 40px; font-size: 15px; }
-.historico-table-wrapper { overflow-x: auto; }
-.historico-table { width: 100%; border-collapse: collapse; font-size: 14px; }
-.historico-table thead tr { background: #fafafa; border-bottom: 2px solid #eee; }
-.historico-table th { padding: 12px 14px; text-align: left; font-weight: 700; color: #555; white-space: nowrap; }
-.historico-row { border-bottom: 1px solid #f0f0f0; transition: background 0.15s; }
-.historico-row:hover { background: #fff8f8; }
-.historico-table td { padding: 12px 14px; color: #333; white-space: nowrap; }
-.badge { background: #fff0f0; color: #c40000; border: 1px solid #ffd0d0; border-radius: 12px; padding: 3px 10px; font-size: 12px; font-weight: 600; }
-.btn-excluir { background: none; border: none; cursor: pointer; font-size: 16px; padding: 4px 8px; border-radius: 4px; transition: background 0.15s; }
-.btn-excluir:hover { background: #fff0f0; }
+.msg-ok { 
+  color: #2e7d32; 
+  font-size: 12px; 
+  margin-top: 4px; 
+  font-weight: 500; 
+}
+
+.form-row { 
+  display: grid; 
+  grid-template-columns: 1fr 1fr;
+  gap: 20px; 
+}
+
+.form-actions { 
+  display: flex; 
+  gap: 10px; 
+  margin-top: 30px; 
+}
+
+.btn-save { 
+  background: #c40000; 
+  color: white; 
+  padding: 12px 30px; 
+  border: none; 
+  border-radius: 4px; 
+  font-size: 16px; 
+  font-weight: 600; 
+  cursor: pointer; 
+  transition: all 0.2s; 
+}
+
+.btn-save:hover:not(:disabled) { 
+  background: #a00000; 
+  transform: translateY(-2px); 
+  box-shadow: 0 4px 8px rgba(196,0,0,0.3); 
+}
+
+.btn-save:disabled { 
+  opacity: 0.7; 
+  cursor: not-allowed; 
+}
+
+.btn-cancel { 
+  background: #f0f0f0; 
+  color: #333; 
+  padding: 12px 30px;
+  border: 1px solid #ddd; 
+  border-radius: 4px; 
+  font-size: 16px; 
+  font-weight: 600; 
+  cursor: pointer; 
+}
+
+.btn-cancel:hover { 
+  background: #e0e0e0; 
+}
+
+th { 
+  background: #c40000;
+}
+
+.historico-container { 
+  padding: 30px; 
+  border-radius: 8px; 
+  box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1); 
+  margin-top: 30px; 
+}
+
+.historico-header { 
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between; 
+  margin-bottom: 20px; 
+}
+
+.historico-header h2 { 
+  color: #c40000; 
+  font-size: 22px; 
+  margin: 0; 
+}
+
+.historico-count { 
+  background: #f0f0f0; 
+  color: #792626; 
+  font-size: 13px; 
+  padding: 4px 12px; 
+  border-radius: 20px; 
+  font-weight: 600; 
+}
+
+.historico-vazio { 
+  text-align: center; 
+  color: #999; 
+  padding: 40px; 
+  font-size: 15px; 
+}
+
+.historico-table-wrapper { 
+  overflow-x: auto; 
+}
+
+.historico-table { 
+  width: 100%; 
+  border-collapse: collapse; 
+  font-size: 14px; 
+}
+
+.historico-table thead tr {
+  background: #fafafa; 
+  border-bottom: 2px solid #eee; 
+}
+
+.historico-table th { 
+  padding: 12px 14px; 
+  text-align: left; 
+  font-weight: 700; 
+  color: #ffffff; 
+  white-space: nowrap; 
+}
+
+.historico-row { 
+  border-bottom: 1px solid #f0f0f0; 
+  transition: background 0.15s; 
+}
+
+.historico-row:hover { 
+  background: #fff8f8; 
+}
+
+.historico-table td { 
+  padding: 12px 14px; 
+  color: #333; 
+  white-space: nowrap; 
+}
+
+.badge { 
+  background: #fff0f0; 
+  color: #c40000; 
+  border: 1px solid #ffd0d0; 
+  border-radius: 12px; 
+  padding: 3px 10px; 
+  font-size: 12px; 
+  font-weight: 600; 
+}
+
+.btn-excluir { 
+  background: none; 
+  border: none; 
+  cursor: pointer; 
+  font-size: 16px; 
+  padding: 4px 8px; 
+  border-radius: 4px; 
+  transition: background 0.15s; 
+}
+
+.btn-excluir:hover { 
+  background: #fff0f0; 
+}
 
 @media (max-width: 768px) {
-  .form-row { grid-template-columns: 1fr; }
-  .form-actions { flex-direction: column; }
-  .btn-save, .btn-cancel { width: 100%; }
+  .form-row { 
+  grid-template-columns: 1fr; 
+}
+  .form-actions { 
+  flex-direction: column; 
+}
+  .btn-save, .btn-cancel { 
+  width: 100%; 
+}
 }
 </style>

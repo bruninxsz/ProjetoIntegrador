@@ -7,6 +7,8 @@ import Login from '../views/Login.vue';
 import Dashboard from '../views/Dashboard.vue'; 
 import CadastroFuncionario from '../views/CadastroFuncionario.vue';
 import CadastroEPI from '../views/CadastroEPI.vue'; 
+import Entregas from '../views/entregas.vue'; 
+import Relatorio from '../views/relatorio.vue'; 
 
 
 
@@ -35,8 +37,19 @@ const routes = [
     {
         path:'/CadastroEPI',
         component: CadastroEPI
+    },
+
+    {
+        path:'/entregas',
+        component: Entregas
+    },
+
+     {
+        path:'/relatorio',
+        component: Relatorio
     }
 ]
+
 
 const router = createRouter({
   history: createWebHistory(),

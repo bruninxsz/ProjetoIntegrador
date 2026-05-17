@@ -405,13 +405,17 @@ padding: 12px;
   border-bottom: 2px solid #eee; 
 }
 
-.historico-table th { 
-  padding: 12px 14px; 
-  text-align: left; 
-  font-weight: 700; 
-  color: #555; 
+th{ 
+  background: #c40000;
+}
+
+.historico-table th { padding: 12px 14px;
+  text-align: left;
+  font-weight: 700;
+  color: #ffffff;
   white-space: nowrap; 
 }
+
 .historico-row { 
   border-bottom: 1px solid #f0f0f0; 
   transition: background 0.15s; 
@@ -434,6 +438,7 @@ padding: 12px;
   font-size: 12px; 
   font-weight: 600; 
 }
+
 
 .qtd { 
   font-weight: 700; 

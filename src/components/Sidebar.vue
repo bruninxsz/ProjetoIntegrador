@@ -15,6 +15,12 @@
       <router-link to="/CadastroEPI" class="nav-item" @click="closeSidebar">
         🦺 Cadastro de EPI
       </router-link>
+      <router-link to="/entregas" class="nav-item" @click="closeSidebar">
+        📦 Entrega de EPI
+      </router-link>
+      <router-link to="/relatorio" class="nav-item" @click="closeSidebar">
+        📊 relatorio
+      </router-link>
     </nav>
   </div>
   </div>
