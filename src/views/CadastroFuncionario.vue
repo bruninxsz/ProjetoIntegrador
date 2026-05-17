@@ -40,7 +40,7 @@
             <label>Telefone</label>
             <input
               v-model="form.telefone"
-              type="tel"
+              type="text"
               placeholder="(00) 00000-0000"
               @input="mascaraTelefone"
               @blur="tocado.telefone = true"
@@ -171,7 +171,7 @@ const telefoneValido = computed(() => {
   return n === 10 || n === 11
 })
 
-// ─── Máscaras (bloqueiam dígitos a mais) ──────────────────
+// ─── Máscaras ─────────────────────────────────────────────
 function mascaraCPF(e) {
   let v = e.target.value.replace(/\D/g, '').slice(0, 11)
   v = v.replace(/(\d{3})(\d)/, '$1.$2')
@@ -242,13 +242,26 @@ async function salvarFuncionario() {
 }
 
 async function excluirFuncionario(id) {
-  if (!confirm('Deseja excluir este funcionário?')) return
+  if (!confirm('Deseja realmente excluir este funcionário?')) return
   try {
-    const { error } = await supabase.from('funcionarios').delete().eq('id', id)
+    // Envia o delete para o Supabase
+    const { error, status } = await supabase
+      .from('funcionarios')
+      .delete()
+      .eq('id', id)
+    
     if (error) throw error
-    historico.value = historico.value.filter(item => item.id !== id)
+
+    // Só removemos da tela se o banco de dados retornar status síncrono de sucesso (200 ou 204)
+    if (status === 204 || status === 200) {
+      historico.value = historico.value.filter(item => item.id !== id)
+      alert('Funcionário excluído com sucesso!')
+    } else {
+      alert('Não foi possível excluir. Verifique as permissões de banco (RLS).')
+    }
   } catch (err) {
-    alert('Erro ao excluir: ' + err.message)
+    console.error('Erro detalhado:', err)
+    alert('Erro ao excluir no banco de dados: ' + err.message)
   }
 }
 
@@ -398,15 +411,12 @@ function formatarDataHora(iso) {
   background: #e0e0e0; 
 }
 
-th { 
-  background: #c40000;
-}
-
 .historico-container { 
   padding: 30px; 
   border-radius: 8px; 
-  box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1); 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); 
   margin-top: 30px; 
+  background: white;
 }
 
 .historico-header { 
@@ -449,12 +459,11 @@ th {
 }
 
 .historico-table thead tr {
-  background: #fafafa; 
-  border-bottom: 2px solid #eee; 
+  background: #c40000; 
 }
 
 .historico-table th { 
-  padding: 12px 14px; 
+  padding: 14px; 
   text-align: left; 
   font-weight: 700; 
   color: #ffffff; 
@@ -502,13 +511,13 @@ th {
 
 @media (max-width: 768px) {
   .form-row { 
-  grid-template-columns: 1fr; 
-}
+    grid-template-columns: 1fr; 
+  }
   .form-actions { 
-  flex-direction: column; 
-}
+    flex-direction: column; 
+  }
   .btn-save, .btn-cancel { 
-  width: 100%; 
-}
+    width: 100%; 
+  }
 }
 </style>
